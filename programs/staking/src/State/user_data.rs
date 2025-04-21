@@ -3,8 +3,8 @@ use anchor_lang::prelaude::*;
 #[account]
 #[derive(InitSpace)]
 
-pub struct user_data {
-    pub user : Pubkey();
-    pub timestamp : u64;
-    pub amount : u64;
+pub struct UserData {
+    pub user: Pubkey,
+    pub timestamp: u64,
+    pub stake_amount: u64,
 }

@@ -8,4 +8,7 @@ pub enum Errors{
 
     ![msg("No Amount Staked")]
     NoAmountStaked
+
+    ![msg("Invalid Amount")]
+    InvalidAmount
 } 
