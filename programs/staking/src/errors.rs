@@ -1,14 +1,13 @@
-use anchor_lang::prelaude::*
+use anchor_lang::prelude::*;
 
 #[error_code]
+pub enum CustomError {
+    #[msg("Not Authorized")]
+    NotAuthorized,
 
-pub enum Errors{
-    ![msg("Not Authorized")]
-    NotAuthorized
+    #[msg("No Amount Staked")]
+    NoAmountStaked,
 
-    ![msg("No Amount Staked")]
-    NoAmountStaked
-
-    ![msg("Invalid Amount")]
-    InvalidAmount
-} 
+    #[msg("Invalid Amount")]
+    InvalidAmount,
+}

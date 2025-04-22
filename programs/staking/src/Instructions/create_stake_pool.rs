@@ -1,5 +1,6 @@
 use crate::{constants::*, state::*};
-use anchor_lang::prelaude::*;
+use anchor_lang::prelude::*;
+use anchor_spl::token::{ Token, TokenAccount};
 
 #[derive(Accounts)]
 pub struct CreateStakePool<'info> {
@@ -10,8 +11,8 @@ pub struct CreateStakePool<'info> {
         init,
         payer = admin,
         space = ANCHOR_DISCRIMINATOR + StakePool::INIT_SPACE,
-        seeds = [STAKE_POOL_SEED]
-        bump
+        seeds = [STAKE_POOL_SEED],
+        bump,
     )]
     pub stake_pool: Account<'info, StakePool>,
 
@@ -50,7 +51,7 @@ pub fn create_stake_pool_handler(
   reward_rate: u64,
 ) -> Result<()>
 {
-    let stake_pool = &ctx.accounts.stake_pool;
+    let stake_pool = &mut ctx.accounts.stake_pool;
 
     stake_pool.admin = ctx.accounts.admin.key();
     stake_pool.stake_mint = ctx.accounts.stake_mint.key();
